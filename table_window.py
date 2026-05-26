@@ -16,7 +16,7 @@ class TableWindow(QMainWindow):
         self.resize(1000, 600)
         self.setWindowTitle("Издательский центр")
         self.db = Database()
-        self.user_id = user_id  # id авторизованного заказчика
+        self.user_id = user_id
         self.tabs = QTabWidget()
         self.tables = {
             "Мои заказы":  f"SELECT * FROM v_zakazchik_orders WHERE zakazchik_id = {self.user_id}"

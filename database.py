@@ -28,7 +28,6 @@ class Database:
             return [], []
 
     def check_user(self, login, password):
-        """Возвращает id_zakazchik при успешной авторизации, иначе None."""
         query = "SELECT id_zakazchik FROM zakazchiki WHERE login = %s AND password = %s"
         try:
             with self.connection.cursor() as cursor:

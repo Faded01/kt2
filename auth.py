@@ -29,7 +29,7 @@ class AuthWindow(QWidget):
     def login(self):
         login_inp = self.login_input.text()
         password_inp = self.password_input.text()
-        user_id = self.db.check_user(login_inp, password_inp)  # теперь возвращает id
+        user_id = self.db.check_user(login_inp, password_inp)
         if user_id:
             self.window = TableWindow(user_id)
             self.window.show()
