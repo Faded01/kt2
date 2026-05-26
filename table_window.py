@@ -19,9 +19,7 @@ class TableWindow(QMainWindow):
         self.user_id = user_id  # id авторизованного заказчика
         self.tabs = QTabWidget()
         self.tables = {
-            "Мои заказы":  f"SELECT * FROM v_zakazchik_orders WHERE zakazchik_id = {self.user_id}",
-            "Книги":       "SELECT * FROM books",
-            "Писатели":    "SELECT * FROM writers"
+            "Мои заказы":  f"SELECT * FROM v_zakazchik_orders WHERE zakazchik_id = {self.user_id}"
         }
         self.init_ui()
 
