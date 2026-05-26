@@ -132,3 +132,21 @@ INSERT INTO `orders` VALUES
 (103, '2023-03-15', NULL,          300, 3, 'B003'),
 (104, '2023-04-20', '2023-05-20',  750, 4, 'B004'),
 (105, '2023-05-25', NULL,          200, 5, 'B005');
+
+CREATE OR REPLACE VIEW `v_zakazchik_orders` AS
+SELECT
+    o.number_order                                          AS `Номер заказа`,
+    o.date_order                                            AS `Дата заказа`,
+    o.date_end_order                                        AS `Дата выполнения`,
+    o.count_exemplars                                       AS `Кол-во экземпляров`,
+    o.zakazchik_id                                          AS zakazchik_id,
+    CONCAT(z.surname_zakazchik, ' ', z.name_zakazchik, ' ',
+           z.patronymic_zakazchik)                          AS `ФИО заказчика`,
+    z.name                                                  AS `Организация`,
+    b.shifr_book                                            AS `Шифр книги`,
+    b.name_book                                             AS `Название книги`,
+    b.cost_book                                             AS `Цена книги`
+FROM orders o
+JOIN zakazchiki z ON o.zakazchik_id = z.id_zakazchik
+JOIN books      b ON o.shifr_book   = b.shifr_book;
+
